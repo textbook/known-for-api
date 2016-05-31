@@ -1,0 +1,8 @@
+---
+applications:
+- name: known-for-api
+  buildpack: https://github.com/cloudfoundry/python-buildpack#v1.5.4
+  command: python3 server.py
+  disk_quota: 256M
+  memory: 64M
+  random-route: false
