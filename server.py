@@ -14,7 +14,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-MOVIE_FIELDS = ('image_url', 'synopsis', 'title', 'url')
+MOVIE_FIELDS = ('image_url', 'release_year', 'synopsis', 'title', 'url')
 PERSON_FIELDS = ('biography', 'image_url', 'name', 'url')
 
 
