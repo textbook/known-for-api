@@ -10,6 +10,33 @@ Requires one environment variable to run:
 
   - `TMDB_API_TOKEN`: a valid token for the TMDb API.
 
+Deployment
+----------
+
+Cloud Foundry
+_____________
+
+`manifest.yml` and `runtime.txt` have been provided to make launching the API
+into Cloud Foundry trivial. Simply configure the appropriate endpoint, org and
+space then `cf push` from the app root to get it going.
+
+Docker
+______
+
+To help simplify client development, the API server has been set up with a
+Docker container configuration. To build and run it locally:
+
+    docker build -t <name> .
+    docker run -d -e "TMDB_API_TOKEN=<your token>" -p 8080:8080 <name>
+
+This will spin up the API in the background and bind its port appropriately.
+Take a note of the number it outputs, which is the container ID and can be used
+in e.g. `docker logs` to get information on the running container.
+
+You can use `docker-machine url` to find the address of your Docker
+machine and head to `http://<docker url>:8080/api/person` to see a random
+person.
+
 ![Powered by TMDb][TMDb logo]
 
   [aTMDb]: https://pythonhosted.org/atmdb/
