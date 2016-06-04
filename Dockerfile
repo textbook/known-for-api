@@ -1,6 +1,12 @@
-FROM python:3.5
+FROM python:alpine
 
 MAINTAINER Jonathan Sharpe <mail@jonrshar.pe>
+
+RUN apk update
+
+RUN apk add ca-certificates
+
+RUN update-ca-certificates
 
 RUN mkdir -p /usr/src/app
 
