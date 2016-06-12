@@ -1,9 +1,12 @@
 # Known For API
 
-Uses [aTMDb] to expose the [TMDb] API. Provides one endpoint:
+Uses [aTMDb] to expose the [TMDb] API. Provides two endpoints:
 
  - `/api/person`: get the information for a random selection from the top 500
    most popular people on TMDb.
+ - `/mock/api/person`: for easy front-end development, even offline, get the
+   information for [William Fichtner] (or whoever's data you place in
+   `mock.json`).
 
 Requires one environment variable to run:
 
@@ -38,3 +41,4 @@ person.
   [aTMDb]: https://pythonhosted.org/atmdb/
   [TMDb]: https://www.themoviedb.org/
   [TMDb logo]: https://assets.tmdb.org/images/logos/var_2_0_PoweredByTMDB_Blk_Bree.png
+  [William Fichtner]: https://www.themoviedb.org/person/886

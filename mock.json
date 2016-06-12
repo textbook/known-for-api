@@ -1,0 +1,29 @@
+{
+  "biography": null,
+  "known_for": [
+    {
+      "url": "https://www.themoviedb.org/movie/155",
+      "synopsis": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
+      "title": "The Dark Knight",
+      "image_url": "https://image.tmdb.org/t/p/w185/1hRoyzDtpgMU7Dz4JF22RANzQO7.jpg",
+      "release_year": 2008
+    },
+    {
+      "url": "https://www.themoviedb.org/movie/68724",
+      "synopsis": "In the year 2159, two classes of people exist: the very wealthy who live on a pristine man-made space station called Elysium, and the rest, who live on an overpopulated, ruined Earth. Secretary Rhodes (Jodie Foster), a hard line government of\ufb01cial, will stop at nothing to enforce anti-immigration laws and preserve the luxurious lifestyle of the citizens of Elysium. That doesn\u2019t stop the people of Earth from trying to get in, by any means they can. When unlucky Max (Matt Damon) is backed into a corner, he agrees to take on a daunting mission that, if successful, will not only save his life, but could bring equality to these polarized worlds.",
+      "title": "Elysium",
+      "image_url": "https://image.tmdb.org/t/p/w185/tHkjoAxmhp3Eau1h0Ir7maKMwUz.jpg",
+      "release_year": 2013
+    },
+    {
+      "url": "https://www.themoviedb.org/movie/98566",
+      "synopsis": "The city needs heroes. Darkness has settled over New York City as Shredder and his evil Foot Clan have an iron grip on everything from the police to the politicians. The future is grim until four unlikely outcast brothers rise from the sewers and discover their destiny as Teenage Mutant Ninja Turtles. The Turtles must work with fearless reporter April and her wise-cracking cameraman Vern Fenwick to save the city and unravel Shredder's diabolical plan.",
+      "title": "Teenage Mutant Ninja Turtles",
+      "image_url": "https://image.tmdb.org/t/p/w185/oDL2ryJ0sV2bmjgshVgJb3qzvwp.jpg",
+      "release_year": 2014
+    }
+  ],
+  "name": "William Fichtner",
+  "image_url": "https://image.tmdb.org/t/p/w185/apj1bgzZI2efSdJolfp6KjhG8CF.jpg",
+  "url": "https://www.themoviedb.org/person/886"
+}

@@ -17,6 +17,9 @@ logger = logging.getLogger(__name__)
 MOVIE_FIELDS = ('image_url', 'release_year', 'synopsis', 'title', 'url')
 PERSON_FIELDS = ('biography', 'image_url', 'name', 'url')
 
+with open('mock.json') as mock_data:
+    MOCK_DATA = mock_data.read()
+
 
 async def random_person(_):
     """Get a random person's details."""
@@ -28,6 +31,14 @@ async def random_person(_):
     logger.info('retrieved information for %s', person.name)
     return web.HTTPOk(
         body=dumps(generate_payload(person)).encode('utf8'),
+        content_type='application/json',
+    )
+
+
+async def mock_random_person(_):
+    """Mock endpoint for testing."""
+    return web.HTTPOk(
+        body=MOCK_DATA.encode('utf8'),
         content_type='application/json',
     )
 
@@ -47,5 +58,6 @@ if __name__ == '__main__':
     app = web.Application()
 
     app.router.add_route('GET', '/api/person', random_person)
+    app.router.add_route('GET', '/mock/api/person', mock_random_person)
 
     web.run_app(app, port=getenv('PORT', 8080))
