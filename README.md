@@ -32,9 +32,8 @@ This will spin up the API in the background and bind its port appropriately.
 Take a note of the number it outputs, which is the container ID and can be used
 in e.g. `docker logs` to get information on the running container.
 
-You can use `docker-machine url` to find the address of your Docker
-machine and head to `http://<docker_url>:8080/api/person` to see a random
-person.
+You can use `docker-machine ip` to find the address of your Docker machine and 
+head to `http://<docker_ip>:8080/api/person` to see a random person.
 
 ![Powered by TMDb][TMDb logo]
 
