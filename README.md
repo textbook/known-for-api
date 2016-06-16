@@ -18,7 +18,8 @@ Requires one environment variable to run:
 
 `manifest.yml` and `runtime.txt` have been provided to make launching the API
 into Cloud Foundry trivial. Simply configure the appropriate endpoint, org and
-space then `cf push` from the app root to get it going.
+space then `cf push` from the app root to get it going. For testing purposes you 
+could use e.g. [PCF Dev] to create a local CF.
 
 ### Docker
 
@@ -40,4 +41,5 @@ head to `http://<docker_ip>:8080/api/person` to see a random person.
   [aTMDb]: https://pythonhosted.org/atmdb/
   [TMDb]: https://www.themoviedb.org/
   [TMDb logo]: https://assets.tmdb.org/images/logos/var_2_0_PoweredByTMDB_Blk_Bree.png
+  [PCF Dev]: https://docs.pivotal.io/pcf-dev/
   [WF]: https://www.themoviedb.org/person/886
