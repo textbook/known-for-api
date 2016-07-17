@@ -12,6 +12,10 @@ Requires one environment variable to run:
 
   - `TMDB_API_TOKEN`: a valid token for the TMDb API.
 
+## Documentation
+
+API documentation is available on [Apiary.io].
+
 ## Deployment
 
 ### Cloud Foundry
@@ -38,6 +42,7 @@ head to `http://<docker_ip>:8080/api/person` to see a random person.
 
 ![Powered by TMDb][TMDb logo]
 
+  [Apiary.io]: http://docs.knownfor.apiary.io
   [aTMDb]: https://pythonhosted.org/atmdb/
   [TMDb]: https://www.themoviedb.org/
   [TMDb logo]: https://assets.tmdb.org/images/logos/var_2_0_PoweredByTMDB_Blk_Bree.png
