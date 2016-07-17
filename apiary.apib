@@ -1,0 +1,52 @@
+FORMAT: 1A
+HOST: https://known-for-api.cfapps.pez.pivotal.io
+
+# Known For
+
+This is an API to allow implementation of [a simple game][1] based on guessing
+what the featured three films for a given actor are. 
+ 
+  [1]: https://github.com/textbook/about/issues/2
+
+## Group People
+
+## Person [/api/person]
+
+The API exposes an endpoint to retrieve a single person from the top 500 most
+popular people on [TMDb][2].
+
+  [2]: https://www.themoviedb.org
+
+### Get a random person [GET]
+
++ Response 200 (application/json)
+
+    + Attributes (Person)
+
+## Mock Person [/mock/api/person]
+
+The API also exposes an endpoint to retrieve a "mock person", using existing
+data that is saved in `mock.json`. This doesn't actually touch any external
+sites, so is much faster and can even be used for offline testing.
+
+### Get the mock person [GET]
+
++ Response 200 (application/json)
+
+    + Attributes (Person)
+
+## Data Structures
+
+### Person (object)
++ name (required)
++ biography
++ image_url (required)
++ url (required)
++ known_for (array[Movie], required)
+
+### Movie (object)
++ title (required)
++ release_year (number, required)
++ synopsis (required)
++ image_url (required)
++ url (string, required)
