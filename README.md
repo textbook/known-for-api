@@ -1,9 +1,11 @@
 # Known For API
 
-Uses [aTMDb] to expose the [TMDb] API. Provides two endpoints:
+Uses [aTMDb] to expose the [TMDb] API. Provides three endpoints:
 
  - `/api/person`: get the information for a random selection from the top 500
    most popular people on TMDb.
+ - `/api/config`: the cached configuration for image locations, etc. (initially
+   `{ data: null, last_update: null }`, updated on first `/api` request).
  - `/mock/api/person`: for easy front-end development, even offline, get the
    information for [William Fichtner][WF] (or whoever's data you place in
    `mock.json`).

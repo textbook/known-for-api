@@ -35,6 +35,23 @@ sites, so is much faster and can even be used for offline testing.
 
     + Attributes (Person)
 
+## Group Configuration
+
+## Config [/api/config]
+
+For debugging and development purposes, the API exposes an endpoint for access
+to the stored configuration (see [the TMDb API docs][3]).
+
+  [3]: http://docs.themoviedb.apiary.io/#reference/configuration/get
+
+### Get the current configuration [GET]
+
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + last_update
+        + data (object)
+
 ## Data Structures
 
 ### Person (object)

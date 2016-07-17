@@ -29,10 +29,7 @@ async def random_person(_):
         logger.warning('something went wrong')
         raise web.HTTPInternalServerError
     logger.info('retrieved information for %s', person.name)
-    return web.HTTPOk(
-        body=dumps(generate_payload(person)).encode('utf8'),
-        content_type='application/json',
-    )
+    return create_response(generate_payload(person))
 
 
 async def mock_random_person(_):
@@ -41,6 +38,19 @@ async def mock_random_person(_):
         body=MOCK_DATA.encode('utf8'),
         content_type='application/json',
     )
+
+async def config(_):
+    """Return the current client config."""
+    updated = tmdb_client.config.get('last_update')
+    return create_response(dict(
+        data=tmdb_client.config.get('data'),
+        last_update=updated.strftime('%Y-%m-%dT%H:%M:%SZ') if updated is not None else None,
+    ))
+
+
+def create_response(body):
+    """Return 200 OK with JSON."""
+    return web.HTTPOk(body=dumps(body).encode('utf8'), content_type='application/json')
 
 
 def generate_payload(person):
@@ -59,5 +69,6 @@ if __name__ == '__main__':
 
     app.router.add_route('GET', '/api/person', random_person)
     app.router.add_route('GET', '/mock/api/person', mock_random_person)
+    app.router.add_route('GET', '/api/config', config)
 
     web.run_app(app, port=getenv('PORT', 8080))
