@@ -1,4 +1,5 @@
 aiohttp==0.21.6
+aiohttp-cors==0.4.0
 atmdb==0.2.1
 chardet==2.3.0
 python-dateutil==2.5.3

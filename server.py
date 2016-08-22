@@ -4,6 +4,7 @@ from os import getenv
 import sys
 
 from aiohttp import web
+from aiohttp_cors import setup, ResourceOptions
 from atmdb import TMDbClient
 
 logging.basicConfig(
@@ -66,9 +67,13 @@ def generate_payload(person):
 if __name__ == '__main__':
     tmdb_client = TMDbClient.from_env()
     app = web.Application()
+    cors = setup(app, defaults={'*': ResourceOptions()})
 
-    app.router.add_route('GET', '/api/person', random_person)
-    app.router.add_route('GET', '/mock/api/person', mock_random_person)
-    app.router.add_route('GET', '/api/config', config)
+    for route, func in [
+        ('/api/person', random_person),
+        ('/mock/api/person', mock_random_person),
+        ('/api/config', config),
+    ]:
+        route = cors.add(app.router.add_route('GET', route, func))
 
     web.run_app(app, port=getenv('PORT', 8080))
