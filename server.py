@@ -16,7 +16,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 MOVIE_FIELDS = ('image_url', 'release_year', 'synopsis', 'title', 'url')
-PERSON_FIELDS = ('biography', 'image_url', 'name', 'url')
+PERSON_FIELDS = ('biography', 'birthday', 'image_url', 'name', 'url')
 
 with open('mock.json') as mock_data:
     MOCK_DATA = mock_data.read()
@@ -26,11 +26,12 @@ async def random_person(_):
     """Get a random person's details."""
     logger.info('received request for random person')
     person = await tmdb_client.get_random_popular_person()
-    if person is None:
+    details = await tmdb_client.get_person(person.id_)
+    if person is None or details is None:
         logger.warning('something went wrong')
         raise web.HTTPInternalServerError
     logger.info('retrieved information for %s', person.name)
-    return create_response(generate_payload(person))
+    return create_response(generate_payload(person, details))
 
 
 async def mock_random_person(_):
@@ -40,28 +41,40 @@ async def mock_random_person(_):
         content_type='application/json',
     )
 
+
 async def config(_):
     """Return the current client config."""
     updated = tmdb_client.config.get('last_update')
     return create_response(dict(
         data=tmdb_client.config.get('data'),
-        last_update=updated.strftime('%Y-%m-%dT%H:%M:%SZ') if updated is not None else None,
+        last_update=format_datetime(updated),
     ))
 
 
 def create_response(body):
     """Return 200 OK with JSON."""
-    return web.HTTPOk(body=dumps(body).encode('utf8'), content_type='application/json')
+    return web.HTTPOk(
+        body=dumps(body).encode('utf8'),
+        content_type='application/json',
+    )
 
 
-def generate_payload(person):
+def generate_payload(person, details):
     """Convert Person object to JSON payload."""
-    payload = {attr: getattr(person, attr) for attr in PERSON_FIELDS}
+    payload = {attr: getattr(details, attr) for attr in PERSON_FIELDS}
     payload.update(known_for=[
         {attr: getattr(movie, attr) for attr in MOVIE_FIELDS}
         for movie in person.known_for
     ])
+    payload.update(birthday=format_datetime(payload.get('birthday')))
     return payload
+
+
+def format_datetime(datetime_):
+    """Convert datetime object to something JSON-serializable."""
+    if datetime_ is None:
+        return None
+    return datetime_.strftime('%Y-%m-%dT%H:%M:%SZ')
 
 
 if __name__ == '__main__':
