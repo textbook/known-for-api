@@ -16,7 +16,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 MOVIE_FIELDS = ('image_url', 'release_year', 'synopsis', 'title', 'url')
-PERSON_FIELDS = ('biography', 'birthday', 'image_url', 'name', 'url')
+PERSON_FIELDS = ('age', 'biography', 'image_url', 'name', 'url')
 
 with open('mock.json') as mock_data:
     MOCK_DATA = mock_data.read()
@@ -65,7 +65,6 @@ def generate_payload(person):
         {attr: getattr(movie, attr) for attr in MOVIE_FIELDS}
         for movie in person.known_for
         ])
-    payload.update(birthday=format_datetime(payload.get('birthday')))
     return payload
 
 
