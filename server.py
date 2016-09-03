@@ -26,12 +26,11 @@ async def random_person(_):
     """Get a random person's details."""
     logger.info('received request for random person')
     person = await tmdb_client.get_random_popular_person()
-    details = await tmdb_client.get_person(person.id_)
-    if person is None or details is None:
+    if person is None:
         logger.warning('something went wrong')
         raise web.HTTPInternalServerError
     logger.info('retrieved information for %s', person.name)
-    return create_response(generate_payload(person, details))
+    return create_response(generate_payload(person))
 
 
 async def mock_random_person(_):
@@ -59,13 +58,13 @@ def create_response(body):
     )
 
 
-def generate_payload(person, details):
+def generate_payload(person):
     """Convert Person object to JSON payload."""
-    payload = {attr: getattr(details, attr) for attr in PERSON_FIELDS}
+    payload = {attr: getattr(person, attr) for attr in PERSON_FIELDS}
     payload.update(known_for=[
         {attr: getattr(movie, attr) for attr in MOVIE_FIELDS}
         for movie in person.known_for
-    ])
+        ])
     payload.update(birthday=format_datetime(payload.get('birthday')))
     return payload
 
