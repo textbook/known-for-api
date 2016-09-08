@@ -21,6 +21,9 @@ PERSON_FIELDS = ('age', 'biography', 'image_url', 'name', 'url')
 with open('mock.json') as mock_data:
     MOCK_DATA = mock_data.read()
 
+with open('search.json') as mock_data:
+    MOCK_SEARCH = mock_data.read()
+
 
 async def random_person(_):
     """Get a random person's details."""
@@ -33,10 +36,27 @@ async def random_person(_):
     return create_response(generate_payload(person))
 
 
+async def search(req):
+    """Search for a movie title."""
+    query = req.GET['query']
+    logger.info('received request to search for "{}"'.format(query))
+    movies = await tmdb_client.find_movie(query)
+    return create_response([movie.title for movie in movies[:5] or []])
+
+
 async def mock_random_person(_):
     """Mock endpoint for testing."""
     return web.HTTPOk(
         body=MOCK_DATA.encode('utf8'),
+        content_type='application/json',
+    )
+
+
+async def mock_search(req):
+    """Mock endpoint for testing."""
+    _ = req.GET['query']
+    return web.HTTPOk(
+        body=MOCK_SEARCH.encode('utf8'),
         content_type='application/json',
     )
 
@@ -82,7 +102,9 @@ if __name__ == '__main__':
 
     for route, func in [
         ('/api/person', random_person),
+        ('/api/search', search),
         ('/mock/api/person', mock_random_person),
+        ('/mock/api/search', mock_search),
         ('/api/config', config),
     ]:
         route = cors.add(app.router.add_route('GET', route, func))
