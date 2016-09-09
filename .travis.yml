@@ -1,0 +1,14 @@
+language: python
+python:
+ - '3.5'
+install: true
+script: true
+deploy:
+  - provider: cloudfoundry
+    edge: true
+    api: https://api.run.pez.pivotal.io
+    username: $CF_USERNAME
+    password: $CF_PASSWORD
+    organization: pivot-jsharpe
+    space: known-for
+    manifest: manifest.yml
