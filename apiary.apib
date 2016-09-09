@@ -35,6 +35,38 @@ sites, so is much faster and can even be used for offline testing.
 
     + Attributes (Person)
 
+## Group Searches
+
+## Search [/api/search?query]
+
+The API exposes an endpoint to search for a movie by title.
+
+### Search for a movie [GET]
+
++ Parameters
+
+    + query (string) - The movie title to search for
+
++ Response 200 (application/json)
+
+    + Attributes (array[string])
+
+## Mock Search [/mock/api/search?query]
+
+The API also exposes an endpoint to retrieve a mock search result, using
+existing data that is saved in `search.json`. This doesn't actually touch any
+external sites, so is much faster and can even be used for offline testing.
+
+### Mock search for a movie [GET]
+
++ Parameters
+
+    + query (string) - The movie title to search for
+
++ Response 200 (application/json)
+
+    + Attributes (array[string])
+
 ## Group Configuration
 
 ## Config [/api/config]
