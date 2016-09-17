@@ -98,7 +98,9 @@ def format_datetime(datetime_):
 if __name__ == '__main__':
     tmdb_client = TMDbClient.from_env()
     app = web.Application()
-    cors = setup(app, defaults={'*': ResourceOptions()})
+    cors = setup(app, defaults={
+        'http://known-for-web.cfapps.pez.pivotal.io': ResourceOptions(),
+    })
 
     for route, func in [
         ('/api/person', random_person),
