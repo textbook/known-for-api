@@ -100,6 +100,7 @@ if __name__ == '__main__':
     app = web.Application()
     cors = setup(app, defaults={
         'http://known-for-web.cfapps.pez.pivotal.io': ResourceOptions(),
+        'http://localhost:4200': ResourceOptions(),
     })
 
     for route, func in [
