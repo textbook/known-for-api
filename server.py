@@ -1,5 +1,6 @@
 from json import dumps
 import logging
+from operator import attrgetter
 from os import getenv
 import sys
 
@@ -41,7 +42,13 @@ async def search(req):
     query = req.GET['query']
     logger.info('received request to search for "{}"'.format(query))
     movies = await tmdb_client.find_movie(query)
-    return create_response([movie.title for movie in movies[:5] or []])
+    seen = set()
+    titles = []
+    for title in map(attrgetter('title'), movies or []):
+        if title not in seen:
+            titles.append(title)
+            seen.add(title)
+    return create_response(titles[:5])
 
 
 async def mock_random_person(_):
