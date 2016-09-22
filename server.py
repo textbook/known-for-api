@@ -99,7 +99,7 @@ if __name__ == '__main__':
     tmdb_client = TMDbClient.from_env()
     app = web.Application()
     cors = setup(app, defaults={
-        'http://known-for-web.cfapps.pez.pivotal.io': ResourceOptions(),
+        'https://known-for-web.cfapps.pez.pivotal.io': ResourceOptions(),
         'http://localhost:4200': ResourceOptions(),
     })
 
