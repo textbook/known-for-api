@@ -5,7 +5,8 @@ install: true
 script: true
 deploy:
   - provider: cloudfoundry
-    edge: true
+    edge:
+      branch: cf-login
     api: https://api.run.pez.pivotal.io
     username: $CF_USERNAME
     password: $CF_PASSWORD
