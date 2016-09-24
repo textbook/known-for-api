@@ -26,5 +26,6 @@
   "name": "William Fichtner",
   "image_url": "https://image.tmdb.org/t/p/w185/apj1bgzZI2efSdJolfp6KjhG8CF.jpg",
   "url": "https://www.themoviedb.org/person/886",
-  "age": 59
+  "age": 59,
+  "alive": true
 }

@@ -17,7 +17,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 MOVIE_FIELDS = ('image_url', 'release_year', 'synopsis', 'title', 'url')
-PERSON_FIELDS = ('age', 'biography', 'image_url', 'name', 'url')
+PERSON_FIELDS = ('age', 'alive', 'biography', 'image_url', 'name', 'url')
 
 with open('mock.json') as mock_data:
     MOCK_DATA = mock_data.read()
