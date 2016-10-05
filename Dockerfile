@@ -14,6 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ./server.py /usr/src/app
 COPY ./mock.json /usr/src/app
+COPY ./search.json /usr/src/app
 
 EXPOSE 8080
 

@@ -32,8 +32,8 @@ could use e.g. [PCF Dev] to create a local CF.
 To help simplify client development, the API server has been set up with a
 Docker container configuration. To build and run it locally:
 
-    docker build -t <name> .
-    docker run -d -e "TMDB_API_TOKEN=<your_token>" -p 8080:8080 <name>
+    docker build -t known-for/api .
+    docker run -d -e "TMDB_API_TOKEN=<your_token>" -p "8080:8080" known-for/api
 
 This will spin up the API in the background and bind its port appropriately.
 Take a note of the number it outputs, which is the container ID and can be used
